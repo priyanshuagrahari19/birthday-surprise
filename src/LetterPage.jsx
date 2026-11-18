@@ -150,7 +150,7 @@ export default function LetterPage({ name, onBack, onNext }) {
 
             <div className="letter-signature">
               <p>With all my love,</p>
-              <h2>Your Best Friend ❤️</h2>
+              <h2>Your Priyanshu</h2>
               <p>Always in your corner, no matter the distance. ♾️</p>
             </div>
 

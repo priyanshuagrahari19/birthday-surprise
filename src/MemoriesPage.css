@@ -1,0 +1,743 @@
+
+@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Patrick+Hand&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+.memories-page {
+  position: relative;
+  isolation: isolate;
+
+  width: 100%;
+  min-height: 100vh;
+  min-height: 100svh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 35px 24px 65px;
+  overflow-x: hidden;
+
+  /* Background image without any overlay */
+  background-color: #28171b;
+  background-image: url("/images/k6.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 100% 100%;
+
+  font-family: "Patrick Hand", cursive;
+  color: #3c3030;
+}
+
+/* Side handwritten notes */
+.side-note {
+  position: absolute;
+  z-index: 4;
+
+  display: flex;
+  flex-direction: column;
+
+  color: #fff0e9;
+  font-family: "Caveat", cursive;
+  font-size: clamp(19px, 2vw, 29px);
+  line-height: 1.02;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+}
+
+.side-note-left {
+  top: 46%;
+  left: 3.5%;
+  transform: rotate(-10deg);
+}
+
+.side-note-right {
+  top: 62%;
+  right: 3.5%;
+  transform: rotate(7deg);
+}
+
+.side-note i {
+  width: 55px;
+  height: 12px;
+  margin-top: 5px;
+  border-top: 2px solid #fff0e9;
+  border-radius: 50%;
+  transform: rotate(-12deg);
+}
+
+/* Heart decoration */
+.top-heart-doodle {
+  position: absolute;
+  z-index: 4;
+  top: 3%;
+  right: 8%;
+  color: #ff9aaf;
+  font-size: clamp(48px, 6vw, 78px);
+  transform: rotate(12deg);
+}
+
+.top-heart-doodle::after {
+  content: "";
+  position: absolute;
+  top: 42%;
+  left: -40px;
+  width: 190px;
+  height: 42px;
+  border-bottom: 2px solid #ff9aaf;
+  border-radius: 50%;
+  transform: rotate(-9deg);
+}
+
+/* Main collage */
+.birthday-collage {
+  position: relative;
+  z-index: 1;
+
+  width: min(680px, 67vw);
+  height: min(490px, 78vh);
+  min-height: 420px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  margin: 0 auto;
+}
+
+/* LEFT PHOTO: k6.jpg */
+.left-memory-photo {
+  position: absolute;
+  z-index: 3;
+
+  left: -42%;
+  top: 18%;
+
+  width: 32%;
+  height: 72%;
+
+  overflow: hidden;
+  background: transparent;
+  border: 3px solid #fff0e9;
+
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.left-memory-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Portrait behind the paper */
+.background-photo {
+  position: absolute;
+  z-index: 1;
+
+  left: 1%;
+  top: -9%;
+
+  width: 31%;
+  height: 83%;
+
+  overflow: hidden;
+  transform: rotate(-5deg);
+}
+
+.background-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Main birthday paper */
+.birthday-paper {
+  position: relative;
+  z-index: 2;
+
+  width: 100%;
+  min-height: 77%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  padding: 32px 45px 36px;
+
+  background-color: #f8e6cd;
+  /* background-image fallback */
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100% 100%;
+
+  clip-path: polygon(
+    2% 7%, 7% 5%, 13% 7%, 20% 4%,
+    29% 6%, 38% 3%, 48% 5%, 58% 3%,
+    68% 6%, 78% 3%, 87% 5%, 96% 4%,
+    98% 13%, 97% 24%, 99% 37%, 97% 49%,
+    99% 63%, 97% 76%, 98% 89%, 94% 96%,
+    85% 94%, 76% 98%, 66% 96%, 55% 98%,
+    45% 96%, 35% 98%, 25% 95%, 15% 98%,
+    5% 95%, 3% 85%, 4% 72%, 2% 59%,
+    4% 46%, 2% 33%, 4% 20%
+  );
+
+  filter: drop-shadow(0 12px 18px rgba(25, 8, 12, 0.25));
+}
+
+/* Greeting */
+.paper-greeting {
+  position: relative;
+  z-index: 2;
+  margin: 0 0 3px;
+
+  font-family: "Caveat", cursive;
+  font-size: clamp(25px, 3vw, 37px);
+  line-height: 1.1;
+  text-align: center;
+
+  transform: rotate(-3deg);
+}
+
+.paper-greeting span {
+  color: #e64c7b;
+}
+
+/* Birthday heading */
+.paper-title {
+  position: relative;
+  z-index: 2;
+  margin: 0;
+
+  color: #d83c6b;
+  font-family: "Caveat", cursive;
+  font-size: clamp(47px, 6.7vw, 78px);
+  font-weight: 700;
+  line-height: 1.05;
+  text-align: center;
+  white-space: nowrap;
+
+  transform: rotate(-4deg);
+}
+
+/* Heading ornament */
+.title-ornament {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 5px 0 12px;
+  color: #d83c6b;
+}
+
+.title-ornament span {
+  display: block;
+  width: 60px;
+  height: 10px;
+  border-top: 5px solid #d83c6b;
+  border-radius: 50%;
+  transform: rotate(-10deg);
+}
+
+.title-ornament b {
+  font-size: 23px;
+  font-weight: 400;
+}
+
+/* Birthday messages */
+.birthday-messages {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  text-align: center;
+}
+
+.paper-message {
+  margin: 5px 0;
+  color: #453633;
+
+  font-family: "Caveat", cursive;
+  font-size: clamp(18px, 2.2vw, 27px);
+  font-weight: 600;
+  line-height: 1.1;
+
+  overflow-wrap: anywhere;
+  transform: rotate(-1deg);
+}
+
+.paper-message:nth-child(even) {
+  transform: rotate(1deg);
+}
+
+.typing-cursor {
+  color: #d83c6b;
+  animation: blink 0.7s step-end infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Signature ribbon */
+.paper-signature {
+  position: relative;
+  z-index: 2;
+
+  margin: 13px 0 0;
+  padding: 5px 20px;
+
+  color: #fff6ed;
+  background: #d94d70;
+
+  font-family: "Caveat", cursive;
+  font-size: clamp(17px, 2vw, 25px);
+  text-align: center;
+
+  transform: rotate(-3deg);
+}
+
+.paper-signature::before,
+.paper-signature::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 12px;
+  height: 100%;
+  background: #d94d70;
+}
+
+.paper-signature::before {
+  left: -5px;
+  transform: skewY(-12deg);
+}
+
+.paper-signature::after {
+  right: -5px;
+  transform: skewY(12deg);
+}
+
+/* Flower decorations */
+.paper-flower {
+  position: absolute;
+  z-index: 3;
+
+  width: 105px;
+  height: 145px;
+
+  object-fit: contain;
+  pointer-events: none;
+}
+
+.paper-flower-left {
+  left: -2%;
+  bottom: -8%;
+  transform: rotate(-12deg);
+}
+
+.paper-flower-right {
+  right: -1%;
+  bottom: -4%;
+  transform: scaleX(-1) rotate(-12deg);
+}
+
+/* Paper doodles */
+.paper-heart {
+  position: absolute;
+  z-index: 3;
+  color: #df6681;
+  font-family: "Caveat", cursive;
+  font-size: 38px;
+}
+
+.paper-heart-left {
+  left: 4%;
+  bottom: 5%;
+  transform: rotate(-18deg);
+}
+
+.paper-heart-right {
+  right: 3%;
+  top: 57%;
+  transform: rotate(12deg);
+}
+
+/* Right photo frame */
+.small-photo-frame {
+  position: absolute;
+  z-index: 5;
+
+  top: 16%;
+  right: -19%;
+
+  width: 145px;
+  height: 170px;
+  padding: 8px 8px 22px;
+
+  background: #fffaf3;
+  transform: rotate(8deg);
+  box-shadow: 0 7px 16px rgba(0, 0, 0, 0.24);
+}
+
+.small-photo-frame img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.photo-tape {
+  position: absolute;
+  z-index: 2;
+  top: -8px;
+  left: 33%;
+
+  width: 55px;
+  height: 18px;
+  background: rgba(255, 145, 164, 0.7);
+  transform: rotate(9deg);
+}
+
+.frame-heart {
+  position: absolute;
+  right: 7px;
+  bottom: 0;
+  color: #e8a0a9;
+  font-size: 20px;
+}
+
+/* Continue button */
+.memory-continue {
+  position: absolute;
+  z-index: 6;
+
+  left: 50%;
+  bottom: -27px;
+
+  width: min(270px, 72%);
+  padding: 12px 17px;
+
+  border: 1px solid rgba(255, 224, 225, 0.8);
+  border-radius: 50px;
+
+  color: #fff8f4;
+  background: linear-gradient(135deg, #f27b9d, #dc4775);
+
+  font-family: "Caveat", cursive;
+  font-size: clamp(19px, 2vw, 24px);
+  font-weight: 700;
+
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(75, 12, 31, 0.28);
+
+  transform: translateX(-50%);
+  transition: filter 0.2s ease, transform 0.2s ease;
+}
+
+.memory-continue:hover {
+  filter: brightness(1.08);
+  transform: translateX(-50%) translateY(-3px);
+}
+
+.bottom-heart {
+  position: absolute;
+  z-index: 5;
+  bottom: -65px;
+  left: 50%;
+  color: #ff9aaf;
+  font-size: 34px;
+  transform: translateX(-50%);
+}
+
+/* Tablet */
+@media (min-width: 601px) and (max-width: 900px) {
+  .memories-page {
+    min-height: 100svh;
+    align-items: flex-start;
+    padding: 180px 24px 90px;
+
+    background-size: 100% auto;
+    background-position: center top;
+
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  .birthday-collage {
+    width: min(680px, 88vw);
+    height: 460px;
+    min-height: 460px;
+    flex-shrink: 0;
+  }
+
+  .birthday-paper {
+    min-height: 75%;
+    padding: 28px 34px 34px;
+  }
+
+  .paper-title {
+    font-size: clamp(44px, 7vw, 65px);
+  }
+
+  .paper-message {
+    font-size: clamp(18px, 2.7vw, 24px);
+  }
+
+  .left-memory-photo {
+    left: -20%;
+    top: 18%;
+    width: 22%;
+    height: 58%;
+  }
+
+  .background-photo {
+    width: 27%;
+    height: 70%;
+  }
+
+  .small-photo-frame {
+    right: -5%;
+    width: 110px;
+    height: 135px;
+  }
+
+  .paper-flower {
+    width: 80px;
+    height: 110px;
+  }
+
+  .side-note-left {
+    top: 95px;
+    left: 4%;
+  }
+
+  .side-note-right {
+    top: auto;
+    right: 4%;
+    bottom: 25px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .memories-page {
+    min-height: 100svh;
+    align-items: flex-start;
+    padding: 220px 12px 85px;
+
+    background-size: 100% auto;
+    background-position: center top;
+
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  .birthday-collage {
+    width: 100%;
+    max-width: 470px;
+    height: auto;
+    min-height: 380px;
+    flex-shrink: 0;
+    margin: 0 auto;
+  }
+
+  .left-memory-photo {
+    left: 3%;
+    top: -155px;
+    width: 27%;
+    height: 125px;
+    border-width: 2px;
+  }
+
+  .birthday-paper {
+    min-height: 300px;
+    padding: 26px 20px 32px;
+  }
+
+  .paper-greeting {
+    font-size: clamp(22px, 6vw, 30px);
+  }
+
+  .paper-title {
+    font-size: clamp(37px, 9vw, 55px);
+  }
+
+  .title-ornament {
+    gap: 8px;
+    margin: 4px 0 10px;
+  }
+
+  .title-ornament span {
+    width: 35px;
+    border-top-width: 4px;
+  }
+
+  .paper-message {
+    font-size: clamp(16px, 4.3vw, 22px);
+    line-height: 1.12;
+    margin: 5px 0;
+  }
+
+  .paper-signature {
+    margin-top: 10px;
+    padding: 4px 12px;
+    font-size: clamp(16px, 4vw, 20px);
+  }
+
+  .background-photo {
+    top: -17px;
+    left: 3%;
+    width: 23%;
+    height: 34%;
+  }
+
+  .small-photo-frame {
+    top: -18px;
+    right: 2%;
+    width: 74px;
+    height: 95px;
+    padding: 5px 5px 15px;
+  }
+
+  .photo-tape {
+    width: 35px;
+    height: 13px;
+  }
+
+  .paper-flower {
+    width: 52px;
+    height: 70px;
+  }
+
+  .paper-heart {
+    font-size: 25px;
+  }
+
+  .memory-continue {
+    bottom: -28px;
+    width: min(250px, 82%);
+    padding: 10px 12px;
+    font-size: 19px;
+  }
+
+  .bottom-heart {
+    bottom: -62px;
+    font-size: 28px;
+  }
+
+  .side-note {
+    font-size: 16px;
+  }
+
+  .side-note-left {
+    top: 100px;
+    left: 5%;
+  }
+
+  .side-note-right {
+    top: auto;
+    right: 5%;
+    bottom: 15px;
+  }
+
+  .top-heart-doodle {
+    top: 24px;
+    right: 27%;
+    font-size: 40px;
+  }
+
+  .top-heart-doodle::after {
+    width: 100px;
+    left: -18px;
+  }
+}
+
+/* Very small phones */
+@media (max-width: 360px) {
+  .memories-page {
+    padding: 190px 8px 78px;
+  }
+
+  .birthday-collage {
+    min-height: 355px;
+  }
+
+  .left-memory-photo {
+    top: -135px;
+    height: 105px;
+  }
+
+  .birthday-paper {
+    padding: 24px 16px 29px;
+  }
+
+  .paper-greeting {
+    font-size: 21px;
+  }
+
+  .paper-title {
+    font-size: 35px;
+  }
+
+  .paper-message {
+    font-size: 15px;
+  }
+
+  .paper-signature {
+    font-size: 14px;
+  }
+
+  .background-photo {
+    width: 21%;
+    height: 29%;
+  }
+
+  .small-photo-frame {
+    width: 63px;
+    height: 82px;
+  }
+
+  .paper-flower {
+    width: 42px;
+    height: 58px;
+  }
+
+  .side-note {
+    font-size: 14px;
+  }
+}
+
+/* Landscape phones */
+@media (max-height: 500px) and (orientation: landscape) {
+  .memories-page {
+    min-height: 100svh;
+    align-items: flex-start;
+    padding: 40px 16px 75px;
+    overflow-y: auto;
+    background-size: 100% auto;
+    background-position: center top;
+  }
+
+  .birthday-collage {
+    width: min(620px, 75vw);
+    height: 430px;
+    min-height: 430px;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .typing-cursor {
+    animation: none;
+  }
+
+  .memory-continue {
+    transition: none;
+  }
+}

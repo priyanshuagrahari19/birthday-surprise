@@ -1,0 +1,398 @@
+
+.polaroid-gallery-page {
+  --gallery-paper: #fffdf5;
+  --gallery-string: #c99b72;
+
+  min-height: 100vh;
+  padding: 48px 24px 60px;
+  overflow: hidden;
+  color: #4b2630;
+  background:
+    radial-gradient(ellipse at top, #fff8f1 0%, transparent 58%),
+    linear-gradient(180deg, #fff1ec 0%, #ffe4e3 100%);
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.gallery-heading {
+  position: relative;
+  z-index: 1;
+  margin: 0 auto 42px;
+  text-align: center;
+}
+
+.gallery-eyebrow {
+  margin: 0 0 12px;
+  color: #a85c69;
+  font-family: Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 3px;
+}
+
+.gallery-heading h1 {
+  margin: 0;
+  color: #8e2035;
+  font-size: clamp(30px, 5vw, 52px);
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.gallery-heart {
+  color: #d64f67;
+}
+
+.gallery-subtitle {
+  margin: 12px 0 0;
+  color: #956b70;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* Six clotheslines */
+
+.clothesline-gallery {
+  width: min(100%, 1050px);
+  margin: 0 auto;
+}
+
+.photo-string-row {
+  position: relative;
+  min-height: 275px;
+  margin-bottom: 24px;
+  padding-top: 35px;
+}
+
+.clothesline {
+  position: absolute;
+  z-index: 0;
+  top: 14px;
+  left: -3%;
+  width: 106%;
+  height: 28px;
+  border-top: 3px solid var(--gallery-string);
+  border-radius: 50%;
+  transform: rotate(-1deg);
+  filter: drop-shadow(0 2px 1px rgb(106 62 41 / 10%));
+}
+
+.photo-string-row:nth-child(even) .clothesline {
+  transform: rotate(1deg);
+}
+
+/* Three hanging photos per row */
+
+.hanging-photos {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: start;
+  justify-items: center;
+  gap: 24px;
+}
+
+.hanging-photo {
+  position: relative;
+  display: block;
+  width: min(100%, 230px);
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  transform: rotate(var(--photo-tilt));
+  transform-origin: top center;
+  animation: photo-arrive 650ms ease both;
+  animation-delay: var(--photo-delay);
+  transition:
+    transform 250ms ease,
+    filter 250ms ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.hanging-photo:hover,
+.hanging-photo:focus-visible {
+  z-index: 3;
+  transform: translateY(-5px) rotate(0deg) scale(1.035);
+  filter: drop-shadow(0 10px 10px rgb(73 35 35 / 15%));
+}
+
+.hanging-photo:focus-visible {
+  outline: 2px dashed #a51f36;
+  outline-offset: 8px;
+}
+
+/* Colorful clips */
+
+.photo-clip {
+  position: absolute;
+  z-index: 3;
+  top: -26px;
+  left: 50%;
+  width: 27px;
+  height: 34px;
+  border: 1px solid rgb(0 0 0 / 10%);
+  border-radius: 3px 3px 2px 2px;
+  box-shadow: 0 2px 3px rgb(0 0 0 / 15%);
+  transform: translateX(-50%) rotate(-3deg);
+}
+
+.photo-clip::before {
+  position: absolute;
+  top: -7px;
+  left: 5px;
+  width: 15px;
+  height: 12px;
+  border: 2px solid rgb(255 255 255 / 65%);
+  border-bottom: 0;
+  border-radius: 9px 9px 0 0;
+  content: "";
+}
+
+.clip-hole {
+  position: absolute;
+  top: 4px;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: rgb(255 255 255 / 70%);
+  transform: translateX(-50%);
+}
+
+.clip-red {
+  background: #fa4b4b;
+}
+
+.clip-green {
+  background: #73c943;
+}
+
+.clip-blue {
+  background: #35a9ee;
+}
+
+.clip-yellow {
+  background: #f8cb45;
+}
+
+.clip-pink {
+  background: #f17cae;
+}
+
+.clip-purple {
+  background: #a88aed;
+}
+
+/* Clean white Polaroid frames: no text */
+
+.polaroid-frame {
+  display: block;
+  padding: 10px;
+  overflow: hidden;
+  background: var(--gallery-paper);
+  border: 1px solid #f0e9de;
+  box-shadow:
+    0 2px 5px rgb(54 30 30 / 13%),
+    0 9px 14px rgb(54 30 30 / 8%);
+}
+
+.polaroid-frame img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  background: #eadfe1;
+}
+
+/* Entrance animation */
+
+@keyframes photo-arrive {
+  from {
+    opacity: 0;
+    transform: translateY(-12px) rotate(var(--photo-tilt));
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) rotate(var(--photo-tilt));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hanging-photo {
+    animation: none;
+    transition: none;
+  }
+}
+
+/* Navigation buttons */
+
+.gallery-navigation {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+  margin: 45px auto 0;
+}
+
+.gallery-back-button,
+.gallery-next-button {
+  min-height: 46px;
+  padding: 12px 23px;
+  border: 1px solid #a51f36;
+  border-radius: 30px;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    transform 200ms ease,
+    box-shadow 200ms ease,
+    background 200ms ease;
+}
+
+.gallery-back-button {
+  color: #a51f36;
+  background: rgb(255 255 255 / 60%);
+}
+
+.gallery-next-button {
+  color: #fff;
+  background: #a51f36;
+  box-shadow: 0 5px 12px rgb(165 31 54 / 18%);
+}
+
+.gallery-back-button:hover,
+.gallery-next-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 7px 16px rgb(165 31 54 / 18%);
+}
+
+.gallery-back-button:hover {
+  background: #fff;
+}
+
+.gallery-next-button:hover {
+  background: #82182b;
+}
+
+/* Enlarged photo overlay */
+
+.photo-lightbox {
+  position: fixed;
+  z-index: 1000;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: rgb(30 10 17 / 85%);
+  backdrop-filter: blur(5px);
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 18px;
+  right: 24px;
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgb(255 255 255 / 50%);
+  border-radius: 50%;
+  color: white;
+  background: rgb(255 255 255 / 12%);
+  font-size: 30px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.lightbox-polaroid {
+  width: min(100%, 440px);
+  max-height: 90vh;
+  padding: 15px;
+  overflow: auto;
+  background: #fffdf7;
+  box-shadow: 0 15px 50px rgb(0 0 0 / 35%);
+}
+
+.lightbox-polaroid img {
+  display: block;
+  width: 100%;
+  max-height: 75vh;
+  object-fit: contain;
+  background: #f2e8e8;
+}
+
+/* Tablet and mobile */
+
+@media (max-width: 700px) {
+  .polaroid-gallery-page {
+    padding: 36px 14px 45px;
+  }
+
+  .gallery-heading {
+    margin-bottom: 32px;
+  }
+
+  .gallery-eyebrow {
+    font-size: 9px;
+    letter-spacing: 2px;
+  }
+
+  .gallery-subtitle {
+    font-size: 14px;
+  }
+
+  .photo-string-row {
+    min-height: 0;
+    margin-bottom: 36px;
+    padding-top: 32px;
+  }
+
+  .hanging-photos {
+    gap: 10px;
+  }
+
+  .hanging-photo {
+    width: 100%;
+  }
+
+  .polaroid-frame {
+    padding: 7px;
+  }
+
+  .photo-clip {
+    top: -24px;
+    width: 23px;
+    height: 31px;
+  }
+
+  .photo-string-row .clothesline {
+    top: 12px;
+  }
+
+  .gallery-navigation {
+    margin-top: 20px;
+  }
+
+  .gallery-back-button,
+  .gallery-next-button {
+    padding: 12px 17px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 380px) {
+  .polaroid-gallery-page {
+    padding-right: 9px;
+    padding-left: 9px;
+  }
+
+  .hanging-photos {
+    gap: 7px;
+  }
+
+  .polaroid-frame {
+    padding: 5px;
+  }
+}
